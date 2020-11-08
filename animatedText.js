@@ -1,9 +1,9 @@
 class AnimaText {
-  constructor(word, x, y, size = 150, gap = 10, styles = null) {
+  constructor(word, x, y, size = 150, gap = 10, types = []) {
     this.x = x;
     this.y = y;
     this.size = size;
-    this.styles = styles;
+    this.types = types;
     this.size = size;
     this.gap = gap;
     this.letters = this.formLetters(word);
@@ -18,12 +18,17 @@ class AnimaText {
   formLetters(letterSet) {
     let animatedLetters = [];
     let xPos = this.x
-    for (let letter of letterSet) {
+    for (let i = 0; i < letterSet.length; i++) {
       let l;
-      if (random() < 0.5) {
-        l = new DotsLetter(letter.toUpperCase(), xPos, this.y, this.size);
+      if (this.types.length > 0) {
+        let randomIndex = Math.floor(random(0, this.types.length));
+        l = new this.types[randomIndex](letterSet[i].toUpperCase(), xPos, this.y, this.size);
       } else {
-        l = new Letter(letter.toUpperCase(), xPos, this.y, this.size);
+        if (random() < 0.5) {
+          l = new DotsLetter(letterSet[i].toUpperCase(), xPos, this.y, this.size);
+        } else {
+          l = new GlitchLetter(letterSet[i].toUpperCase(), xPos, this.y, this.size);
+        }
       }
       animatedLetters.push(l);
       xPos += l.w + this.gap;
@@ -40,9 +45,9 @@ class Letter {
   constructor(letter, x, y, size) {
     this.letter = letter;
     this.size = size;
-    this.w = this.letterWidth();
     this.x = x;
     this.y = y;
+    this.w = this.letterWidth();
   }
 
   show() {
