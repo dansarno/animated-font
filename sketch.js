@@ -1,7 +1,3 @@
-// let letter = 'D';
-// let bounds;
-// let points;
-//
 let font;
 
 function preload() {
@@ -20,13 +16,4 @@ function draw() {
   background(50);
 
   myName.render();
-  noLoop();
-
-  // points = font.textToPoints(letter, 100, 150, 150);
-  //
-  // for (let p of points) {
-  //   noStroke();
-  //   fill(255);
-  //   circle(p.x + random(-2, 2), p.y + random(-2, 2), 3);
-  // }
 }

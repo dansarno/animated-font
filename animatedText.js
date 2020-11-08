@@ -10,18 +10,23 @@ class AnimaText {
   }
 
   render() {
-    let xPos = this.x
     for (let letter of this.letters) {
-      letter.show(xPos, this.y, this.size);
-      console.log(letter.w);
-      xPos += letter.w + this.gap;
+      letter.show();
     }
   }
 
   formLetters(letterSet) {
     let animatedLetters = [];
+    let xPos = this.x
     for (let letter of letterSet) {
-      animatedLetters.push(new Letter(letter.toUpperCase(), this.size));
+      let l;
+      if (random() < 0.5) {
+        l = new DotsLetter(letter.toUpperCase(), xPos, this.y, this.size);
+      } else {
+        l = new Letter(letter.toUpperCase(), xPos, this.y, this.size);
+      }
+      animatedLetters.push(l);
+      xPos += l.w + this.gap;
     }
     return animatedLetters;
   }
@@ -32,20 +37,20 @@ class AnimaText {
 }
 
 class Letter {
-  constructor(letter, size) {
-    textSize(size);
+  constructor(letter, x, y, size) {
     this.letter = letter;
     this.size = size;
-    // this.w = textWidth(this.letter);
     this.w = this.letterWidth();
+    this.x = x;
+    this.y = y;
   }
 
-  show(x, y, size) {
+  show() {
     noStroke();
     fill(255);
     textFont(font);
-    textSize(size);
-    text(this.letter, x, y);
+    textSize(this.size);
+    text(this.letter, this.x, this.y);
   }
 
   letterWidth() {
