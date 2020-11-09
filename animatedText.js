@@ -72,4 +72,15 @@ class Letter {
     }
     return rightPos - leftPos;
   }
+
+  com() {
+    let sumX = 0;
+    let sumY = 0;
+    let pts = font.textToPoints(this.letter, 0, 0, this.size);
+    for (let p of pts) {
+      sumX += p.x;
+      sumY += p.y;
+    }
+    return [(sumX / pts.length) + this.x, (sumY / pts.length) + this.y];
+  }
 }

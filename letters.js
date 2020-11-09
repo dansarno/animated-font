@@ -134,6 +134,7 @@ class NeonLetter extends Letter {
   show() {
     colorMode(RGB);
     stroke(255, 51, 241);
+    strokeJoin(ROUND);
     strokeWeight(8);
     noFill();
     textFont(font);
