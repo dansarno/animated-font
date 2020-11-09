@@ -9,7 +9,7 @@ let word = 'Daniel';
 
 function setup() {
   createCanvas(600, 200);
-  let aniTypes = [RainbowLetter, GlitchLetter, LinesLetter]; // GlitchLetter, DotsLetter, WaveLetter, AlphaLetter
+  let aniTypes = [NeonLetter]; // GlitchLetter, DotsLetter, WaveLetter, AlphaLetter
   myName = new AnimaText(word, 50, 150, 150, 10, aniTypes);
 }
 

@@ -124,3 +124,28 @@ class RainbowLetter extends Letter {
     }
   }
 }
+
+class NeonLetter extends Letter {
+  constructor(letter, x, y, size) {
+    super(letter, x, y, size);
+    this.randomStart = random();
+  }
+
+  show() {
+    colorMode(RGB);
+    stroke(255, 51, 241);
+    strokeWeight(8);
+    noFill();
+    textFont(font);
+    textSize(this.size);
+    text(this.letter, this.x, this.y);
+    if (noise((frameCount / 10) + this.randomStart) < 0.7) {
+      stroke(255);
+      strokeWeight(4);
+      noFill();
+      textFont(font);
+      textSize(this.size);
+      text(this.letter, this.x, this.y);
+    }
+  }
+}
