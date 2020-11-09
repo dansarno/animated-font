@@ -98,6 +98,17 @@ class Letter {
         arrOfPts[arrOfPts.length - 1].push(p);
       }
     }
+
+    // Rearrange array so that the longest path is the first element
+    let mostPtsIndex = 0;
+    let mostPts = 0;
+    for (let i = 0; i < arrOfPts.length; i++) {
+      if (mostPts < arrOfPts[i].length) {
+        mostPts = arrOfPts[i].length;
+        mostPtsIndex = i;
+      }
+    }
+    [arrOfPts[0], arrOfPts[mostPtsIndex]] = [arrOfPts[mostPtsIndex], arrOfPts[0]];
     return arrOfPts;
   }
 }

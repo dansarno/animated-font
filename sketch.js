@@ -5,7 +5,7 @@ function preload() {
 }
 
 let myName;
-let word = 'Daniel';
+let word = 'Louise';
 
 function setup() {
   createCanvas(900, 200);
