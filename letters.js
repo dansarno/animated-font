@@ -78,3 +78,25 @@ class GlitchLetter extends Letter {
     text(this.letter, this.x + random(-1, 1), this.y + random(-1, 1));
   }
 }
+
+class LinesLetter extends Letter {
+  constructor(letter, x, y, size) {
+    super(letter, x, y, size);
+    this.pts = font.textToPoints(this.letter, this.x, this.y, this.size, {
+      sampleFactor: 0.6
+    });
+  }
+
+  show() {
+    stroke(120, 0, 0);
+    fill(255);
+    let radius = this.size / 25;
+    for (let i = 0; i < this.pts.length - 1; i++) {
+      let p = this.pts[Math.floor(random(0, this.pts.length))];
+      let q = this.pts[Math.floor(random(0, this.pts.length))];
+      if (dist(p.x, p.y, q.x, q.y) < this.w * 0.7) {
+        line(p.x, p.y, q.x, q.y);
+      }
+    }
+  }
+}

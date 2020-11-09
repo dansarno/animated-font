@@ -5,11 +5,11 @@ function preload() {
 }
 
 let myName;
-let word = 'Hello';
+let word = 'Daniel';
 
 function setup() {
   createCanvas(600, 200);
-  let aniTypes = [GlitchLetter, DotsLetter, WaveLetter, AlphaLetter];
+  let aniTypes = [LinesLetter, GlitchLetter, DotsLetter]; // GlitchLetter, DotsLetter, WaveLetter, AlphaLetter
   myName = new AnimaText(word, 50, 150, 150, 10, aniTypes);
 }
 
