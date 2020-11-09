@@ -153,3 +153,28 @@ class NeonLetter extends Letter {
     }
   }
 }
+
+class PerlinLetter extends Letter {
+  constructor(letter, x, y, size) {
+    super(letter, x, y, size);
+    this.pts = font.textToPoints(this.letter, this.x, this.y, this.size, {
+      sampleFactor: 0.6
+    });
+  }
+
+  show() {
+    colorMode(RGB);
+    noStroke();
+    fill(0, 109, 212, 50);
+    let arrayOfPts = this.splitPts()
+    let pts = arrayOfPts[0];
+    let centreX, centreY;
+    [centreX, centreY] = this.com();
+    beginShape();
+    for (let i = 0; i < pts.length; i++) {
+      vertex(pts[i].x + ((pts[i].x - centreX) * (noise(i / 10) / 2)),
+        pts[i].y + (pts[i].y - centreY) * (noise(i / 10) / 2));
+    }
+    endShape(CLOSE);
+  }
+}
