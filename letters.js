@@ -7,6 +7,7 @@ class DotsLetter extends Letter {
   show() {
     colorMode(RGB);
     stroke(0);
+    strokeWeight(2);
     fill(255);
     let radius = this.size / 25;
     for (let p of this.pts) {
@@ -18,18 +19,18 @@ class DotsLetter extends Letter {
 class WaveLetter extends Letter {
   constructor(letter, x, y, size) {
     super(letter, x, y, size);
-    this.pts = font.textToPoints(this.letter, this.x, this.y, this.size);
+    this.pts = font.textToPoints(this.letter, this.x, this.y, this.size, {
+      sampleFactor: 0.6
+    });
   }
 
   show() {
     colorMode(RGB);
-    stroke(255, 0, 255);
-    fill(255, 0, 255);
-    beginShape(POINTS);
+    noStroke();
+    fill(0, 109, 212);
     for (let p of this.pts) {
-      vertex(p.x + sin(frameCount * 0.05 + p.y * 0.1) * 5, p.y);
+      circle(p.x + sin(frameCount * 0.05 + p.y * 0.1) * 5, p.y, 5);
     }
-    endShape();
   }
 }
 
@@ -115,12 +116,21 @@ class RainbowLetter extends Letter {
 
   show() {
     colorMode(HSB);
-    for (let i = 0; i < this.pts.length; i++) {
-      stroke(map(i, 0, this.pts.length, 0, 360), 40, 100);
-      strokeWeight(3);
-      let p = this.pts[(frameCount + i) % this.pts.length];
-      let q = this.pts[(frameCount + i + 1) % this.pts.length];
-      line(p.x, p.y, q.x, q.y);
+    let arrayOfPts = this.splitPts();
+    let maxNumPts = 0;
+    for (let pts of arrayOfPts) {
+      if (pts.length > maxNumPts) {
+        maxNumPts = pts.length;
+      }
+    }
+    for (let pts of arrayOfPts) {
+      for (let i = 0; i < pts.length; i++) {
+        stroke(map(i, 0, pts.length, 0, 360), 40, 100);
+        strokeWeight(8);
+        let p = pts[(frameCount + i) % pts.length];
+        let q = pts[(frameCount + i + 1) % pts.length];
+        line(p.x, p.y, q.x, q.y);
+      }
     }
   }
 }

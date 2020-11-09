@@ -83,4 +83,21 @@ class Letter {
     }
     return [(sumX / pts.length) + this.x, (sumY / pts.length) + this.y];
   }
+
+  splitPts() {
+    let arrOfPts = [
+      []
+    ];
+    let expectedDist = dist(this.pts[1].x, this.pts[1].y, this.pts[0].x, this.pts[0].y);
+    for (let i = 0; i < this.pts.length; i++) {
+      let p = this.pts[i];
+      let q = this.pts[(i + 1) % this.pts.length];
+      if (dist(p.x, p.y, q.x, q.y) > expectedDist * 1.5) {
+        arrOfPts.push([]);
+      } else {
+        arrOfPts[arrOfPts.length - 1].push(p);
+      }
+    }
+    return arrOfPts;
+  }
 }

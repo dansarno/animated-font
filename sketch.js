@@ -8,13 +8,13 @@ let myName;
 let word = 'Daniel';
 
 function setup() {
-  createCanvas(600, 200);
-  let aniTypes = [NeonLetter]; // GlitchLetter, DotsLetter, WaveLetter, AlphaLetter
-  myName = new AnimaText(word, 50, 150, 150, 10, aniTypes);
+  createCanvas(900, 200);
+  let aniTypes = [RainbowLetter]; // GlitchLetter, DotsLetter, WaveLetter, AlphaLetter
+  myName = new AnimaText(word, 50, 150, 150, 20, aniTypes);
 }
 
 function draw() {
   colorMode(RGB);
-  background(200);
+  background(255);
   myName.render();
 }
