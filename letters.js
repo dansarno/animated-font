@@ -6,7 +6,7 @@ class DotsLetter extends Letter {
 
   show() {
     colorMode(RGB);
-    stroke(0);
+    stroke(100);
     strokeWeight(2);
     fill(255);
     let radius = this.size / 25;
@@ -94,7 +94,7 @@ class LinesLetter extends Letter {
 
   show() {
     colorMode(RGB);
-    stroke(214, 255, 252);
+    stroke(255, 115, 84);
     strokeWeight(2);
     for (let i = 0; i < this.pts.length - 1; i++) {
       let p = this.pts[Math.floor(random(0, this.pts.length))];
@@ -165,7 +165,7 @@ class PerlinLetter extends Letter {
   show() {
     colorMode(RGB);
     noStroke();
-    fill(0, 109, 212, 50);
+    fill(156, 255, 177);
     let arrayOfPts = this.splitPts()
     let pts = arrayOfPts[0];
     let centreX, centreY;
