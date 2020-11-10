@@ -1,20 +1,20 @@
 let font;
 
 function preload() {
-  font = loadFont('assets/QuartzoBold-W9lv.ttf');
+  font = loadFont('assets/Chibolddemo-1GD7g.ttf');
 }
 
-let myName;
-let word = 'Daniel';
+let myWord;
+let word = 'coding';
 
 function setup() {
-  createCanvas(900, 200);
-  let aniTypes = [PerlinLetter]; // GlitchLetter, DotsLetter, WaveLetter, AlphaLetter
-  myName = new AnimaText(word, 50, 150, 150, 20, aniTypes);
+  createCanvas(800, 200);
+  let aniTypes = [RainbowLetter]; // GlitchLetter, DotsLetter, WaveLetter, AlphaLetter
+  myWord = new AnimaText(word, 50, 150, 150, 20, aniTypes);
 }
 
 function draw() {
   colorMode(RGB);
   background(255);
-  myName.render();
+  myWord.render();
 }

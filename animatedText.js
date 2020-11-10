@@ -24,11 +24,11 @@ class AnimaText {
         let randomIndex = Math.floor(random(0, this.types.length));
         l = new this.types[randomIndex](letterSet[i].toUpperCase(), xPos, this.y, this.size);
       } else {
-        if (random() < 0.5) {
-          l = new DotsLetter(letterSet[i].toUpperCase(), xPos, this.y, this.size);
-        } else {
-          l = new GlitchLetter(letterSet[i].toUpperCase(), xPos, this.y, this.size);
-        }
+        let allTypes = [RainbowLetter, DotsLetter, LinesLetter, GlitchLetter,
+          PerlinLetter, WaveLetter, NeonLetter
+        ];
+        let randomIndex = Math.floor(random(0, allTypes.length));
+        l = new allTypes[randomIndex](letterSet[i].toUpperCase(), xPos, this.y, this.size);
       }
       animatedLetters.push(l);
       xPos += l.w + this.gap;
