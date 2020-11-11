@@ -1,11 +1,11 @@
 let font;
 
 function preload() {
-  font = loadFont('assets/fonts/Chibolddemo-1GD7g.ttf');
+  font = loadFont('assets/fonts/QuartzoBold-W9lv.ttf');
 }
 
 let myWord;
-let word = 'Loop';
+let word = 'Animate';
 
 function setup() {
   createCanvas(800, 200);
