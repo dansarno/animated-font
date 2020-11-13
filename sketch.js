@@ -5,12 +5,12 @@ function preload() {
 }
 
 let myWord;
-let word = 'Animate';
+let word = 'Hello, world!';
 
 function setup() {
-  createCanvas(800, 200);
+  createCanvas(windowWidth, windowHeight);
   let aniTypes = [RainbowLetter]; // GlitchLetter, DotsLetter, WaveLetter, AlphaLetter
-  myWord = new AnimaText(word, 50, 150, 150, 20, aniTypes);
+  myWord = new AnimaText(word, 50, 300, 200, 20, aniTypes);
   // createLoop({
   //   duration: 3,
   //   gif: true,

@@ -59,6 +59,9 @@ class Letter {
   }
 
   letterWidth() {
+    if (this.letter == ' ') {
+      return this.size / 2;
+    }
     let leftPos = 5;
     let rightPos = 0;
     let pts = font.textToPoints(this.letter, 0, 0, this.size);
@@ -88,6 +91,9 @@ class Letter {
     let arrOfPts = [
       []
     ];
+    if (this.pts.length == 0) {
+      return arrOfPts
+    }
     let expectedDist = dist(this.pts[1].x, this.pts[1].y, this.pts[0].x, this.pts[0].y);
     for (let i = 0; i < this.pts.length; i++) {
       let p = this.pts[i];

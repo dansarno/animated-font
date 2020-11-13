@@ -110,20 +110,22 @@ class RainbowLetter extends Letter {
   constructor(letter, x, y, size) {
     super(letter, x, y, size);
     this.pts = font.textToPoints(this.letter, this.x, this.y, this.size, {
-      sampleFactor: 0.3
+      sampleFactor: 1
     });
   }
 
   show() {
     colorMode(HSB);
     let arrayOfPts = this.splitPts()
-    let pts = arrayOfPts[0];
-    for (let i = 0; i < pts.length; i++) {
-      stroke(map(i, 0, pts.length, 0, 360), 40, 100);
-      strokeWeight(8);
-      let p = pts[(frameCount + i) % pts.length];
-      let q = pts[(frameCount + i + 1) % pts.length];
-      line(p.x, p.y, q.x, q.y);
+    for (let pts of arrayOfPts) {
+      // let pts = arrayOfPts[0];
+      for (let i = 0; i < pts.length; i++) {
+        stroke(map(i, 0, pts.length, 0, 360), 40, 100);
+        strokeWeight(this.size / 20);
+        let p = pts[(frameCount + i) % pts.length];
+        let q = pts[(frameCount + i + 1) % pts.length];
+        line(p.x, p.y, q.x, q.y);
+      }
     }
   }
 }
