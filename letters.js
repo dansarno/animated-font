@@ -117,8 +117,8 @@ class RainbowLetter extends Letter {
   show() {
     colorMode(HSB);
     let arrayOfPts = this.splitPts()
+    // let pts = arrayOfPts[0];
     for (let pts of arrayOfPts) {
-      // let pts = arrayOfPts[0];
       for (let i = 0; i < pts.length; i++) {
         stroke(map(i, 0, pts.length, 0, 360), 40, 100);
         strokeWeight(this.size / 20);

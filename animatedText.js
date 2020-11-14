@@ -9,12 +9,20 @@ class AnimaText {
     this.letters = this.formLetters(word);
   }
 
+  /**
+   * Renders each letter to canvas
+   */
   render() {
     for (let letter of this.letters) {
       letter.show();
     }
   }
 
+  /**
+   * Forms an array of animated letters from an input string
+   * @param  {String} letterSet String of characters to animate
+   * @return {Array}            Array of animated letters
+   */
   formLetters(letterSet) {
     let animatedLetters = [];
     let xPos = this.x
@@ -58,6 +66,10 @@ class Letter {
     text(this.letter, this.x, this.y);
   }
 
+  /**
+   * Calculates the width of a letter using limits of textToPoints
+   * @return {Number} Width of the letter in pixels
+   */
   letterWidth() {
     if (this.letter == ' ') {
       return this.size / 2;
@@ -76,6 +88,10 @@ class Letter {
     return rightPos - leftPos;
   }
 
+  /**
+   * Calculates the centre of mass of a letter using the averages of textToPoints
+   * @return {Array} Two element array of [xCOM, yCOM]
+   */
   com() {
     let sumX = 0;
     let sumY = 0;
@@ -87,6 +103,14 @@ class Letter {
     return [(sumX / pts.length) + this.x, (sumY / pts.length) + this.y];
   }
 
+  /**
+   * Splits the points returned from textToPoints into separate arrays if there
+   * is a discontinuity in the letter, e.g. "B" has three distinct curves that
+   * define the letter stroke: one outer and two inner curves.
+   * Note: this function ensures the first array constains the most points i.e.
+   * is the outer edge of the letter.
+   * @return {Array} Array of array of points
+   */
   splitPts() {
     let arrOfPts = [
       []
