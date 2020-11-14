@@ -58,6 +58,9 @@ class Letter {
     this.w = this.letterWidth();
   }
 
+  /**
+   * Renders generic letter to canvas. Concrete letter classes override this method.
+   */
   show() {
     noStroke();
     fill(255);
@@ -107,7 +110,7 @@ class Letter {
    * Splits the points returned from textToPoints into separate arrays if there
    * is a discontinuity in the letter, e.g. "B" has three distinct curves that
    * define the letter stroke: one outer and two inner curves.
-   * Note: this function ensures the first array constains the most points i.e.
+   * Note: this method ensures the first array constains the most points i.e.
    * is the outer edge of the letter.
    * @return {Array} Array of array of points
    */
